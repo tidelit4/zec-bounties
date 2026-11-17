@@ -154,7 +154,7 @@ function FilterButton({
           : "border-border text-muted-foreground hover:border-primary/40 hover:text-primary"
       }`}
     >
-      {children}
+      {children}{" "}
       <span className="absolute -right-1 -top-1 min-w-4 rounded-full bg-background px-1 text-[10px] leading-4 tabular-nums text-muted-foreground ring-1 ring-border">
         {count}
       </span>
