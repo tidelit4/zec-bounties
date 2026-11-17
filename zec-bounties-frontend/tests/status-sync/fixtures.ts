@@ -99,6 +99,7 @@ export class Backend {
       const pathname = url.pathname;
       const pageNumber = Number(url.searchParams.get("page")) || 1;
       this.calls.get(page)!.push({ method, path: pathname, page: pageNumber });
+      if (process.env.PROBE) console.log(`PROBE ${Date.now()} ${method} ${pathname}${url.search}`);
       let json: any = [];
       if (method !== "GET") {
         const input = req.postDataJSON() ?? {};

@@ -6,6 +6,7 @@ test("bounty approval applies the response without reloading the list", async ({
   api.rows[0] = bounty(1, "TO_DO");
   await api.open(page, "/admin", admin);
   const pagesBefore = api.listCalls(page).length;
+  if (process.env.PROBE) console.log(`PROBE ${Date.now()} BASELINE pagesBefore=${pagesBefore}`);
   const actions = page.getByRole("button", { name: "Actions for Status bounty 1", exact: true });
 
   await actions.click();

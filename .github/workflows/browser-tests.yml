@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+      - ci/flake-probe
     paths:
       - "zec-bounties-frontend/**"
       - ".github/workflows/browser-tests.yml"
@@ -52,7 +53,9 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run browser tests
-        run: yarn test:browser
+        env:
+          PROBE: "1"
+        run: yarn test:browser tests/status-sync/rebase-regressions.spec.ts -g "bounty approval" --repeat-each=12 --retries=0 --reporter=list
 
       - name: Upload Playwright report
         if: always()
