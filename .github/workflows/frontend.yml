@@ -93,7 +93,7 @@ jobs:
 
       - name: Run accessibility tests
         if: steps.changes.outputs.skip != 'true'
-        run: yarn playwright test tests/accessibility/wcag-probe.spec.ts --repeat-each=5 --retries=0 --reporter=list
+        run: yarn playwright test tests/accessibility --repeat-each=3 --retries=0 --reporter=list
 
       - name: Upload Playwright report
         if: always() && steps.changes.outputs.skip != 'true'
